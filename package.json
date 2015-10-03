@@ -2,7 +2,6 @@
   "name": "react-reflux-coffee-boilerplate",
   "version": "1.0.0",
   "description": "React reflux coffee bolerplate",
-  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "coffee lib/app.coffee"
