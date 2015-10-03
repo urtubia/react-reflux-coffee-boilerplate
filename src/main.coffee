@@ -11,7 +11,7 @@ defaultStore = Reflux.createStore
         message: "You are in #{res.body.country} and your ip is #{res.body.ip}"
 
   getInitialState: ->
-    message: 'Getting ip info...'
+    message: 'Getting ip infomercial...'
 
 MainComponent = React.createClass
 

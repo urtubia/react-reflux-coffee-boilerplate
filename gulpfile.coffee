@@ -8,22 +8,18 @@ stylus = require('gulp-stylus')
 uglify = require('gulp-uglify')
 streamify = require('gulp-streamify')
 
-build_css = (src, outfile) ->
+build_css = (src) ->
   gulp.src(src)
     .pipe(stylus())
     .pipe gulp.dest('public/')
-  return
 
 watch_css = (watch, src) ->
   gulp.watch watch, ->
-    gulp.src(src)
-      .pipe(stylus())
-      .pipe gulp.dest('public/')
-    return
-  return
+    build_css src
 
 watch_bundler = (src, outfile) ->
-  bundler = watchify(browserify(src,
+  bundler = watchify(browserify(
+    entries: src
     cache: {}
     packageCache: {}
     fullPaths: true))
@@ -55,7 +51,7 @@ build_browserify = (src, outfile) ->
 
 gulp.task 'default', ->
   build_browserify './src/main.coffee', 'bundle.js'
-  build_css [ './src/style/*.styl' ], 'src/style/main.styl'
+  build_css [ './src/style/*.styl' ]
 
 gulp.task 'watch', ->
   watch_bundler './src/main.coffee', 'bundle.js'
